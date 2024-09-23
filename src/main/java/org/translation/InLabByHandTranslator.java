@@ -22,9 +22,9 @@ public class InLabByHandTranslator implements Translator {
      * @return list of language abbreviations which are available for this country
      */
 
-    public static final String CANADA = canadaCode;
+    private static String canadaCode = "can";
 
-    private String canadaCode = "can";
+    public static final String CANADA = canadaCode;
 
     @Override
     public List<String> getCountryLanguages(String country) {
