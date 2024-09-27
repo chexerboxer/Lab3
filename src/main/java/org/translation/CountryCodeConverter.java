@@ -35,9 +35,12 @@ public class CountryCodeConverter {
         try {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
-            for (String line : lines) {
-                String[] parts = line.split(" ");
-                codeToCountry.put(parts[2], parts[0]);
+
+            // skip header line
+            int i;
+            for (i = 1; i < lines.size(); i++) {
+                String[] parts = lines.get(i).split("\t");
+                codeToCountry.put(parts[2].toLowerCase(), parts[0]);
                 countryToCode.put(parts[0], parts[2]);
             }
         }
